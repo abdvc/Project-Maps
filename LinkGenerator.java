@@ -3,7 +3,7 @@ public class RunLinkGen {
 public static void main(String[] args) {
      LinkGenerator Linkgen = new LinkGenerator();
      Linkgen.setApiKey("AIzaSyCxkwnaGiEcNqla43FKBPfNR3sW-ApIQ5E");
-     Linkgen.setParam(Linkgen.center("2nd Gizri Street,Phase 4,DHA") + Linkgen.marker("Zamzama Park", "blue") + Linkgen.marker("Teen Talwar", "red"));
+     Linkgen.setParam(Linkgen.center("Teen Talwar") + Linkgen.marker("Zamzama Park", "blue") + Linkgen.marker("Teen Talwar", "red") + Linkgen.setPath(24.829392, 67.050809, 24.828256, 67.041942) + Linkgen.addPath(24.841253, 67.032336) );
         System.out.println(Linkgen.generateLink());
     }
     
@@ -80,7 +80,7 @@ class LinkGenerator {
          return str;
     }
      
-    void addPath(double addlat, double addlong) {
+    String addPath(double addlat, double addlong) {
          String str = "|" + addlat + "," + addlong;
          return str;
     }
@@ -89,4 +89,3 @@ class LinkGenerator {
         API_key = a;
     }
 }
-
