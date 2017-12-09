@@ -65,17 +65,24 @@ class LinkGenerator {
         return a;
     }
     
-    void setPath(String start, String end) {
+    String setPath(String start, String end) {
          start.replaceAll(" ", "+");
          end.replaceAll(" ", "+");
          String colour = "blue";
-         String str = "&path=color:blue|weight:5|" + start + "|" + end;
+         String str = "&path=color:" +colour+ "|weight:5|" + start + "|" + end;
+         return str;
     }
     
-    void setPath(double startlat,double startlong, double endlat, double endlong) {
+    String setPath(double startlat,double startlong, double endlat, double endlong) {
          String colour = "blue";
-         String str = "&path=color:blue|weight:5|" + startlat + "," + startlong
+         String str = "&path=color:" +colour + "|weight:5|" + startlat + "," + startlong
                  + "|" + endlat + "," + endlong;
+         return str;
+    }
+     
+    void addPath(double addlat, double addlong) {
+         String str = "|" + addlat + "," + addlong;
+         return str;
     }
      
     void setApiKey(String a) {
