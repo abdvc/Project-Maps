@@ -35,7 +35,7 @@ public class LinkGenerator {
     
     String generateLink() {
         String a = "https://maps.googleapis.com/maps/api/staticmap?";
-        a += Param + "&" + API_key;
+        a += Param + "&key=" + API_key;
         return a;
     }
     
