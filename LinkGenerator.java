@@ -3,7 +3,7 @@ public class RunLinkGen {
 public static void main(String[] args) {
      LinkGenerator Linkgen = new LinkGenerator();
      Linkgen.setApiKey("AIzaSyCxkwnaGiEcNqla43FKBPfNR3sW-ApIQ5E");
-     Linkgen.setParam(Linkgen.center("Teen Talwar") + Linkgen.marker("Zamzama Park", "blue") + Linkgen.marker("Teen Talwar", "red") + Linkgen.setPath(24.829392, 67.050809, 24.828256, 67.041942) + Linkgen.addPath(24.841253, 67.032336) );
+     Linkgen.setParam(Linkgen.center("Institute of Business Administration, Karachi") + Linkgen.marker("Institute of Business Administration, Karachi", "blue") + Linkgen.marker("Institute of Business Administration City Campus, Karachi", "blue") + Linkgen.setPath(24.829392, 67.050809, 24.828256, 67.041942) + Linkgen.addPath(24.841253, 67.032336) );
         System.out.println(Linkgen.generateLink());
     }
     
@@ -61,7 +61,7 @@ class LinkGenerator {
     
     String generateLink() {
         String a = "https://maps.googleapis.com/maps/api/staticmap?";
-        a += Param + "&zoom=14&size=600x300&maptype=roadmap" + "&key=" + API_key;
+        a += Param + "&zoom=12&size=1024x1024&maptype=roadmap" + "&key=" + API_key;
         return a;
     }
     
