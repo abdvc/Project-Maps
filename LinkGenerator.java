@@ -80,6 +80,15 @@ class LinkGenerator {
          return str;
     }
      
+    String SetPath(String[] path) { //Takes an array of latlongs strings to make a path between multiple locations.
+        String colour = "blue";
+        String str = "&path=color:" +colour + "|weight:5|";
+        for (int i = 0; i < path.length; i++) {
+            str += path[i] + '|';
+        }
+        return str;
+    }
+     
     String addPath(double addlat, double addlong) {
          String str = "|" + addlat + "," + addlong;
          return str;
