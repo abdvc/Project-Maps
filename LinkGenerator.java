@@ -46,6 +46,11 @@ class LinkGenerator {
         Param.append(para);
     }
     
+     
+    void clearParam() {
+        Param.delete(0, Param.length());
+    }
+     
     String center(String location){
         location = location.replaceAll(" ", "+");
         return "center=" + location;
