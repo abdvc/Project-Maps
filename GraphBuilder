@@ -1,6 +1,15 @@
-public class GraphBuilder {
-    graph network = new graph();
-    
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.LinkedList;
+
+/**
+ *
+ * @author 13100
+ */
+ class GraphBuilder {
+    graph network;
     void buildGraph() throws FileNotFoundException, IOException { 
         FileReader in = new FileReader("data.txt");
         
@@ -10,26 +19,28 @@ public class GraphBuilder {
         
         String[][] edges = new String[210][20];
         String[] a;
-        vertex temp;
+        Vertex temp;
+        LinkedList<Vertex> vlist = new LinkedList();
         
         k = stream.readLine();
         while (k != null && k.compareTo("Edges") != 0) { // adding vertices and storing edges
-            a = k.split(" ");
-            network.insertVertex(a[0], a[1]);
+            vlist.add(new Vertex(k));
             k = stream.readLine();
         }
+        
+        network = new graph(vlist);
         
         k = stream.readLine();
         while (k != null) {
            a = k.split(" ");
             for (int i = 1; i < a.length; i++) {
-                network.insertEdge(a[0], a[i]);
+                network.insertEdge(a);
             }
             k = stream.readLine();
         }
         
         in.close();
-        network.Display();
+        network.display();
     }
     
 }
