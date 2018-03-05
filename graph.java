@@ -6,21 +6,26 @@
 package javaapplication88;
 
 import java.util.LinkedList;
-
 /**
  *
  * @author Abdullah
  */
-public class Graph {
+public class graph {
     LinkedList<Edge>[] list;
     LinkedList<Vertex> vList;
     
-    Graph(LinkedList<Vertex> list){
+    graph(LinkedList<Vertex> list){
         vList = list;
         this.list = new LinkedList[list.size()];
         for (int i = 0; i < this.list.length; i++) {
             this.list[i] = new LinkedList<>();
         }
+    }
+    
+    public String findLatLong(String a) {
+        Vertex c = this.findVert(a);
+        String str = c.lat + "," + c.lon;
+        return str;
     }
     
     public void insertEdge(String[] arr){
@@ -47,29 +52,5 @@ public class Graph {
                 System.out.println(list[i].get(j).weight);
             }
         }
-    }
-}
-public class Vertex {
-    String label;
-    double lat;
-    double lon;
-    
-    Vertex(String str){
-        String[] s1 = str.split(" ");
-        label = s1[0];
-        String[] s2 = s1[1].split(",");
-        lat = Double.parseDouble(s2[0]);
-        lon = Double.parseDouble(s2[1]);
-    }
-}
-public class Edge {
-
-    double weight;
-    Vertex src;
-    Vertex dst;
-
-    Edge(Vertex v1, Vertex v2) {
-        weight = Math.sqrt(Math.pow(v2.lat - v1.lat, 2)
-                + Math.pow(v2.lon - v1.lon, 2));
     }
 }

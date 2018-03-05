@@ -1,14 +1,17 @@
-package linkgenerator;
-public class RunLinkGen {
-public static void main(String[] args) {
-     LinkGenerator Linkgen = new LinkGenerator();
-     Linkgen.setApiKey("AIzaSyCxkwnaGiEcNqla43FKBPfNR3sW-ApIQ5E");
-     Linkgen.setParam(Linkgen.center("Institute of Business Administration, Karachi") + Linkgen.marker("Institute of Business Administration, Karachi", "blue") + Linkgen.marker("Institute of Business Administration City Campus, Karachi", "blue") + Linkgen.setPath(24.829392, 67.050809, 24.828256, 67.041942) + Linkgen.addPath(24.841253, 67.032336) );
-        System.out.println(Linkgen.generateLink());
-    }
-    
-    
-}
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication88;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author Abdullah
+ */
+
 class LinkGenerator {
     LinkGenerator(){}
     StringBuilder Param = new StringBuilder();
@@ -70,33 +73,35 @@ class LinkGenerator {
         return a;
     }
     
-    String setPath(String start, String end) {
+    void setPath(String start, String end) {
          start.replaceAll(" ", "+");
          end.replaceAll(" ", "+");
          String colour = "blue";
          String str = "&path=color:" +colour+ "|weight:5|" + start + "|" + end;
-         return str;
+         Param.append(str);
     }
     
-    String setPath(double startlat,double startlong, double endlat, double endlong) {
+    void setPath(double startlat,double startlong, double endlat, double endlong) {
          String colour = "blue";
          String str = "&path=color:" +colour + "|weight:5|" + startlat + "," + startlong
                  + "|" + endlat + "," + endlong;
-         return str;
+         Param.append(str);
     }
      
-    String SetPath(String[] path) { //Takes an array of latlongs strings to make a path between multiple locations.
+   void SetPath(ArrayList<String> path) { //Takes an array of latlongs strings to make a path between multiple locations.
         String colour = "blue";
-        String str = "&path=color:" +colour + "|weight:5|";
-        for (int i = 0; i < path.length; i++) {
-            str += path[i] + '|';
+        String str = "&path=color:" +colour + "|weight:5";
+        str += "|" + path.get(0);
+        for (int i = 1; i < path.size(); i++) {
+            str += "|" + path.get(i);
         }
-        return str;
+        Param.append(str);
     }
+    
      
-    String addPath(double addlat, double addlong) {
+    void addPath(double addlat, double addlong) {
          String str = "|" + addlat + "," + addlong;
-         return str;
+         Param.append(str);
     }
      
     void setApiKey(String a) {
